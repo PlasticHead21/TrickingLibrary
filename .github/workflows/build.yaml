@@ -1,11 +1,9 @@
-﻿name: build-app
+﻿name: build app
 on: [push]
 jobs:
-  build:
-    name: Build our App
+  check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull code
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
