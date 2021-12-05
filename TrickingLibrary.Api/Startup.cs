@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TrickingLibrary.Api.Stores;
 
 namespace TrickingLibrary.Api
 {
@@ -22,6 +23,7 @@ namespace TrickingLibrary.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton<TrickyStore>();
             services.AddCors(options => options.AddPolicy(ALLCORS, builder =>
                 builder.AllowAnyHeader()
                     .AllowAnyOrigin()
