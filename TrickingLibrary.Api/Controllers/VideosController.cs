@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 
 namespace TrickingLibrary.Api.Controllers
 {
@@ -15,6 +16,15 @@ namespace TrickingLibrary.Api.Controllers
         public VideosController(IWebHostEnvironment env)
         {
             _env = env;
+        }
+
+        [HttpGet("{videoName}")]
+        public IActionResult GetVideo(string videoName)
+        {
+            var path = Path.Combine(_env.WebRootPath, videoName);
+            var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+            var result = new FileStreamResult(fileStream, "video/*");
+            return result;
         }
         
         [HttpPost]
@@ -29,7 +39,7 @@ namespace TrickingLibrary.Api.Controllers
                 await video.CopyToAsync(fileStream);
             }
             
-            return Ok();
+            return Ok(fileName);
         }
     }
 }
