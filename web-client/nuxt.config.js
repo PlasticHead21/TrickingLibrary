@@ -41,8 +41,7 @@ export default {
     '@nuxtjs/axios'
   ],
   axios: {
-    // extra config e.g
-    // BaseURL: 'https://link-to-API'
+     baseURL: "http://localhost:5000"
   },
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
