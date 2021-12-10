@@ -13,5 +13,6 @@ export const mutations = {
 export const actions = {
   async fetchMessage({commit, dispatch}) {
     await dispatch("tricks/fetchTricks");
+    await dispatch("submissions/fetchSubmissions");
   }
 }
